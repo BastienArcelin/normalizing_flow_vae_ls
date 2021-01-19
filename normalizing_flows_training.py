@@ -13,7 +13,7 @@ z_2 = np.load('data/latent_space_2.npy',mmap_mode = 'c')
 z = np.concatenate((z,z_2), axis = 0)
 
 hidden_dim = [256,256]
-layers =8
+layers =12
 bijectors = []
 for i in range(0, layers):
     made = make_network(32, hidden_dim,2)
@@ -36,14 +36,14 @@ model.compile(optimizer=tf.optimizers.Adam(), loss=lambda _, log_prob: -log_prob
 
 model.summary()
 
-loading_path = 'nflow_weights/'
-latest = tf.train.latest_checkpoint(loading_path)
-model.load_weights(latest)
+# loading_path = 'nflow_weights/'
+# latest = tf.train.latest_checkpoint(loading_path)
+# model.load_weights(latest)
 
 _ = model.fit(x=z,
               y=np.zeros((z.shape[0], 0), dtype=np.float32),
               batch_size= z.shape[0],
-              epochs=2000,
+              epochs=10000,
               steps_per_epoch=1,
               verbose=1, 
               shuffle=False)

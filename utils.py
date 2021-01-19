@@ -31,9 +31,9 @@ def norm(x, bands, path , channel_last=False, inplace=True):
     while bands[0]>9:
         bands = np.array(bands)-10
     full_path = pathlib.PurePath(path)
-    isolated_or_blended = full_path.parts[6][0:len(full_path.parts[6])-9]
+    #isolated_or_blended = full_path.parts[6][0:len(full_path.parts[6])-9]
 
-    test_dir = str(Path(path).parents[0])+'/norm_cst/'
+    test_dir = str(Path(path).parents[0])+'/data/norm_cst/'
     I = np.load(test_dir+'galaxies_isolated_20191024_0_I_norm.npy', mmap_mode = 'c')
     if not inplace:
         y = np.copy(x)
@@ -66,10 +66,10 @@ def denorm(x, bands ,path , channel_last=False, inplace=True):
     while bands[0]>9:
         bands = np.array(bands)-10
     full_path = pathlib.PurePath(path)
-    isolated_or_blended = full_path.parts[6][0:len(full_path.parts[6])-9]
+    #isolated_or_blended = full_path.parts[6][0:len(full_path.parts[6])-9]
     #print(isolated_or_blended)
-    test_dir = str(Path(path).parents[0])+'/norm_cst/'
-    I = np.load(test_dir+'galaxies_'+isolated_or_blended+'_20191024_0_I_norm.npy', mmap_mode = 'c')#I = np.concatenate([I_euclid,n_years*I_lsst])
+    test_dir = str(Path(path).parents[0])+'/data/norm_cst/'
+    I = np.load(test_dir+'galaxies_isolated_20191024_0_I_norm.npy', mmap_mode = 'c')#I = np.concatenate([I_euclid,n_years*I_lsst])
     if not inplace:
         y = np.copy(x)
     else:
