@@ -13,7 +13,7 @@ z_2 = np.load('data/latent_space_2.npy',mmap_mode = 'c')
 z = np.concatenate((z,z_2), axis = 0)
 
 hidden_dim = [256,256]
-layers =12
+layers =8
 bijectors = []
 for i in range(0, layers):
     made = make_network(32, hidden_dim,2)
