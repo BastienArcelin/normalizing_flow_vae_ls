@@ -34,7 +34,7 @@ def norm(x, bands, path , channel_last=False, inplace=True):
     isolated_or_blended = full_path.parts[6][0:len(full_path.parts[6])-9]
 
     test_dir = str(Path(path).parents[0])+'/norm_cst/'
-    I = np.load(test_dir+'galaxies_'+isolated_or_blended+'_20191024_0_I_norm.npy', mmap_mode = 'c')
+    I = np.load(test_dir+'galaxies_isolated_20191024_0_I_norm.npy', mmap_mode = 'c')
     if not inplace:
         y = np.copy(x)
     else:

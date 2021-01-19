@@ -36,14 +36,14 @@ model.compile(optimizer=tf.optimizers.Adam(), loss=lambda _, log_prob: -log_prob
 
 model.summary()
 
-# loading_path = 'nflow_weights/'
-# latest = tf.train.latest_checkpoint(loading_path)
-# model.load_weights(latest)
+loading_path = 'nflow_weights/'
+latest = tf.train.latest_checkpoint(loading_path)
+model.load_weights(latest)
 
 _ = model.fit(x=z,
               y=np.zeros((z.shape[0], 0), dtype=np.float32),
               batch_size= z.shape[0],
-              epochs=30000,
+              epochs=2000,
               steps_per_epoch=1,
               verbose=1, 
               shuffle=False)
